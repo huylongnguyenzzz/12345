@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thông tin người dùng</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header, footer { text-align: center; padding: 20px; background-color: #f4f4f4; }
+        main { padding: 20px; }
+        form { max-width: 500px; margin: auto; display: flex; flex-direction: column; }
+        label, input, textarea { margin: 10px 0; padding: 10px; }
+        input[type="radio"], input[type="checkbox"] { width: auto; }
+        button { background-color: #007bff; color: white; padding: 10px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        @media (max-width: 600px) { form { width: 90%; } }
+        .banner{background-color: #007bff; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-mascot-logo-dragon-transparent-background-png-image_2859897.jpg" alt="logo">
+        <img  src="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474075VIJ/background-banner-black-gold_014238978.jpg" alt="banner" class="banner">
+        <h1>Đăng ký thông tin người dùng</h1>
+    </header>
+
+    <main>
+        <form id="registrationForm">
+            <label>Họ và tên: <input type="text" id="fullname" required></label>
+            <label>Email: <input type="email" id="email" required></label>
+            <label>Phone: <input type="text" id="phone" required></label>
+            <label>Giới tính: <input type="radio" name="gender" value="Nam" required> Nam <input type="radio" name="gender" value="Nữ"> Nữ</label>
+            <label>Sở thích: <input type="checkbox" name="hobbies" value="Thể thao"> Thể thao
+                <input type="checkbox" name="hobbies" value="Phim ảnh"> Phim ảnh
+                <input type="checkbox" name="hobbies" value="Đọc sách"> Đọc sách
+                <input type="checkbox" name="hobbies" value="Âm nhạc"> Âm nhạc
+                <input type="checkbox" name="hobbies" value="Khác"> Khác</label>
+            <label>Giới thiệu bản thân: <textarea id="intro" rows="1" required></textarea></label>
+            <button type="submit">Đăng ký</button>
+        </form>
+    </main>
+
+    <footer>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const hobbies = [...document.querySelectorAll('input[name="hobbies"]:checked')].map(cb => cb.value);
+            const intro = document.getElementById('intro').value;
+            alert(`Thông tin bạn đã nhập:\nTên: ${fullname}\nEmail: ${email}\nSố điện thoại: ${phone}\nGiới tính: ${gender}\nSở thích: ${hobbies.join(', ')}\nGiới thiệu: ${intro}`);
+            
+        });
+    </script>
+</body>
+</html>
